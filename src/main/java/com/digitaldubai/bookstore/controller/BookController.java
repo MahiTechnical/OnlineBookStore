@@ -1,5 +1,7 @@
-package com.digitaldubai.bookstore;
+package com.digitaldubai.bookstore.controller;
 
+import com.digitaldubai.bookstore.entity.Book;
+import com.digitaldubai.bookstore.repository.BookRepository;
 import com.digitaldubai.bookstore.error.BookNotFoundException;
 import com.digitaldubai.bookstore.error.BookUnSupportedFieldPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,13 +97,17 @@ public class BookController {
       String checkOut(@RequestBody CheckoutForm checkoutForm) {
         double sum = 0,discount = 0;
         if(!isEmptyString(checkoutForm.getPromotionCode())) {
-            //if promotion code is discount
-            if (checkoutForm.getPromotionCode().equalsIgnoreCase("DISCOUNT")) {
+            //if promotion code is discount,else no promotion code
+            if (checkoutForm.getPromotionCode().equalsIgnoreCase(Constants.DISCOUNT)) {
                 for (Book book : checkoutForm.getBooks()) {
+
+                    repository.findById(book.getId())
+                            .orElseThrow(() -> new BookNotFoundException(book.getId()));
                     sum += book.getPrice();
-                    if (book.getType().equalsIgnoreCase("Comics")) {
+                    if (book.getType().equalsIgnoreCase(Constants.BOOK_TYPE_COMICS)) {
+                        //zero % discount
                         discount= 100-0;
-                    } else if (book.getType().equalsIgnoreCase("Fiction")) {
+                    } else if (book.getType().equalsIgnoreCase(Constants.BOOK_TYPE_FICTION)) {//20% discount
                         discount= 100-20;
                     }
                     sum=(discount*sum)/100;
@@ -113,7 +119,7 @@ public class BookController {
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.HALF_UP);
 
-        return df.format(sum);
+        return "Amount Payble:"+df.format(sum);
     }
 
     boolean isEmptyString(String str){

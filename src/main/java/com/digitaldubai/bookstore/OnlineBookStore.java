@@ -1,5 +1,7 @@
 package com.digitaldubai.bookstore;
 
+import com.digitaldubai.bookstore.entity.Book;
+import com.digitaldubai.bookstore.repository.BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

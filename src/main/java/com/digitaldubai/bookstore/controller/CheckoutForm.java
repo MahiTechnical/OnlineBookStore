@@ -1,4 +1,6 @@
-package com.digitaldubai.bookstore;
+package com.digitaldubai.bookstore.controller;
+
+import com.digitaldubai.bookstore.entity.Book;
 
 import java.util.List;
 

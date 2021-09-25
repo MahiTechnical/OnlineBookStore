@@ -1,4 +1,4 @@
-package com.digitaldubai.bookstore;
+package com.digitaldubai.bookstore.entity;
 
 
 
