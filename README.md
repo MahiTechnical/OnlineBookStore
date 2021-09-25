@@ -1,5 +1,5 @@
 # Online Book Store
-#REST API for an online bookstore, where the user can perform the following operations CRUD operations on Books and Checkout operation for single or multiple books which will return the total payable amount.
+#REST API for an online bookstore, where the user can perform the CRUD operations on Books and Checkout operation for single or multiple books which will return the total payable amount.
 
 ###Tech Stack
 #Docker 19.03
