@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "4b236b8c-3179-40de-9b1f-a786a452c12a",
+		"name": "onlinebookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "listBooks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:24:20 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"A Guide to the Bodhisattva Way of Life\",\n        \"description\": \"\",\n        \"author\": \"Santideva\",\n        \"price\": 15.41\n    },\n    {\n        \"id\": 2,\n        \"name\": \"The Life-Changing Magic of Tidying Up\",\n        \"description\": \"\",\n        \"author\": \"Marie Kondo\",\n        \"price\": 9.69\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Refactoring: Improving the Design of Existing Code\",\n        \"description\": \"\",\n        \"author\": \"Martin Fowler\",\n        \"price\": 47.99\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Spring REST tutorials\",\n        \"description\": null,\n        \"author\": \"mkyong\",\n        \"price\": 9.99\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Spring REST tutorials\",\n        \"description\": null,\n        \"author\": \"mkyong\",\n        \"price\": 9.99\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Spring REST tutorials111111111111111\",\n        \"description\": null,\n        \"author\": \"mkyong\",\n        \"price\": 9.99\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "searchBook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "searchBook",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:31:21 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"A Guide to the Bodhisattva Way of Life\",\n    \"description\": \"\",\n    \"author\": \"Santideva\",\n    \"price\": 15.41\n}"
+				},
+				{
+					"name": "searchBook",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:32:19 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"A Guide to the Bodhisattva Way of Life\",\n    \"description\": \"\",\n    \"author\": \"Santideva\",\n    \"price\": 15.41\n}"
+				}
+			]
+		},
+		{
+			"name": "addBook",
+			"protocolProfileBehavior": {
+				"strictSSL": false,
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Spring REST tutorials111111111111111\",\r\n    \"author\":\"mkyong\",\r\n    \"price\":\"9.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "saveBook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Spring REST tutorials111111111111111\",\r\n    \"author\":\"mkyong\",\r\n    \"price\":\"9.99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:32:31 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"name\": \"Spring REST tutorials111111111111111\",\n    \"description\": null,\n    \"author\": \"mkyong\",\n    \"price\": 9.99\n}"
+				}
+			]
+		},
+		{
+			"name": "checkout",
+			"protocolProfileBehavior": {
+				"followRedirects": false,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"books\": [\r\n    {\r\n    \"name\":\"Spring REST\",\r\n    \"author\":\"Sara\",\r\n    \"price\":\"9.99\",\r\n    \"type\":\"Comics\"\r\n    },\r\n     {\r\n    \"name\":\"Spring REST\",\r\n    \"author\":\"Sara\",\r\n    \"price\":\"9.99\",\r\n    \"type\":\"Fiction\"\r\n    }\r\n],\r\n\"promotionCode\":\"Discount\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "checkout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"books\": [\r\n    {\r\n    \"name\":\"Spring REST\",\r\n    \"author\":\"Sara\",\r\n    \"price\":\"9.99\",\r\n    \"type\":\"Comics\"\r\n    },\r\n     {\r\n    \"name\":\"Spring REST\",\r\n    \"author\":\"Sara\",\r\n    \"price\":\"9.99\",\r\n    \"type\":\"Fiction\"\r\n    }\r\n],\r\n\"promotionCode\":\"Discount\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"checkout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 17:15:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "15.98"
+				},
+				{
+					"name": "saveBook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Spring REST tutorials111111111111111\",\r\n    \"author\":\"mkyong\",\r\n    \"price\":\"9.99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:32:31 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"name\": \"Spring REST tutorials111111111111111\",\n    \"description\": null,\n    \"author\": \"mkyong\",\n    \"price\": 9.99\n}"
+				}
+			]
+		},
+		{
+			"name": "updateBook",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Spring Forever\",\r\n    \"author\":\"Dubai Dgital\",\r\n    \"price\":\"9.99\",\r\n    \"type\":\"Study\",\r\n    \"description\":\"Fiction\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/books/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateBook",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Spring Forever\",\r\n    \"author\":\"Dubai Dgital\",\r\n    \"price\":\"9.99\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/books/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:28:58 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"name\": \"Spring Forever\",\n    \"description\": null,\n    \"author\": \"Dubai Dgital\",\n    \"price\": 9.99\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteBook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteBook",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"4"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Sep 2021 10:36:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2021-09-25T10:36:03.082+0000\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"No class com.digitaldubai.bookstore.Book entity with id 4 exists!\",\n    \"path\": \"/books/4\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
