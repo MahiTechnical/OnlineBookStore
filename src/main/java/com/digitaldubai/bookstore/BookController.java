@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -91,32 +92,28 @@ public class BookController {
 
     //
     @PostMapping("/checkout")
-    //return 201 instead of 200
-      BigDecimal checkOut(@RequestBody List<Book> books, String promotionCode) {
-        BigDecimal sum =new BigDecimal(0);
-        if(!isEmptyString(promotionCode)) {
+      String checkOut(@RequestBody CheckoutForm checkoutForm) {
+        double sum = 0,discount = 0;
+        if(!isEmptyString(checkoutForm.getPromotionCode())) {
             //if promotion code is discount
-            if (promotionCode.equalsIgnoreCase("DISCOUNT")) {
-                for (Book book : books) {
+            if (checkoutForm.getPromotionCode().equalsIgnoreCase("DISCOUNT")) {
+                for (Book book : checkoutForm.getBooks()) {
+                    sum += book.getPrice();
                     if (book.getType().equalsIgnoreCase("Comics")) {
-                        sum = (sum.add(book.getPrice())).multiply(new BigDecimal(1.0));
+                        discount= 100-0;
                     } else if (book.getType().equalsIgnoreCase("Fiction")) {
-                        sum = (sum.add(book.getPrice())).multiply(new BigDecimal(10 / 100));
+                        discount= 100-20;
                     }
+                    sum=(discount*sum)/100;
                 }
             }
         }else{
-            for (Book book : books) {
-                if (book.getType().equalsIgnoreCase("Comics")) {
-                    sum = (sum.add(book.getPrice())).multiply(new BigDecimal(1.0));
-                } else if (book.getType().equalsIgnoreCase("Fiction")) {
-                    sum = (sum.add(book.getPrice())).multiply(new BigDecimal(10 / 100));
-                }
-            }
+            sum = checkoutForm.getBooks().stream().filter(a->a!=null ).mapToDouble(Book::getPrice).sum();
         }
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
 
-
-        return sum;
+        return df.format(sum);
     }
 
     boolean isEmptyString(String str){

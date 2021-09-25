@@ -15,7 +15,6 @@ import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +38,7 @@ public class BookControllerRestTemplateTest {
 
     @Before
     public void init() {
-        Book book = new Book(1L, "Book Name", "Sara P", new BigDecimal("9.99"),"","","");
+        Book book = new Book(1L, "Book Name", "Sara P", 9.99,"","23131231","comics");
         when(mockRepository.findById(1L)).thenReturn(Optional.of(book));
     }
 
@@ -63,8 +62,8 @@ public class BookControllerRestTemplateTest {
     public void find_allBook_OK() throws Exception {
 
         List<Book> books = Arrays.asList(
-                new Book(1L, "Book A", "Ah Pig", new BigDecimal("1.99"),"","",""),
-                new Book(2L, "Book B", "Ah Dog", new BigDecimal("2.99"),"","",""));
+                new Book(1L, "Book A", "Ah Doors", 1.99,"","34324343","Fiction"),
+                new Book(2L, "Book B", "Ah Windows", 2.99,"","23324324","NonFiction"));
 
         when(mockRepository.findAll()).thenReturn(books);
 
@@ -93,7 +92,7 @@ public class BookControllerRestTemplateTest {
     @Test
     public void save_book_OK() throws Exception {
 
-        Book newBook = new Book(1L, "Spring Boot Guide", "Sara P", new BigDecimal("2.99"),"","","");
+        Book newBook = new Book(1L, "Spring Boot Guide", "Sara P", 2.99,"","241241","Computers");
         when(mockRepository.save(any(Book.class))).thenReturn(newBook);
 
         String expected = om.writeValueAsString(newBook);
@@ -110,7 +109,7 @@ public class BookControllerRestTemplateTest {
     @Test
     public void update_book_OK() throws Exception {
 
-        Book updateBook = new Book(1L, "ABC", "Sara P", new BigDecimal("19.99"),"","","");
+        Book updateBook = new Book(1L, "ABC", "Sara P", 19.99,"","12321312","comics");
         when(mockRepository.save(any(Book.class))).thenReturn(updateBook);
 
         HttpHeaders headers = new HttpHeaders();

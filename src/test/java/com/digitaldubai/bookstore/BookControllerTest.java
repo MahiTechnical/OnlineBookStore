@@ -15,7 +15,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +43,7 @@ public class BookControllerTest {
 
     @Before
     public void init() {
-        Book book = new Book(1L, "Book Name", "Sara P", new BigDecimal("9.99"),"","","");
+        Book book = new Book(1L, "Book Name", "Sara P", 9.99,"","868667867876","Computers");
         when(mockRepository.findById(1L)).thenReturn(Optional.of(book));
     }
 
@@ -68,8 +67,8 @@ public class BookControllerTest {
     public void find_allBook_OK() throws Exception {
 
         List<Book> books = Arrays.asList(
-                new Book(1L, "Book A", "Ah Pig", new BigDecimal("1.99"),"","",""),
-                new Book(2L, "Book B", "Ah Dog", new BigDecimal("2.99"),"","",""));
+                new Book(1L, "Book A", "Ah Doors", 1.99,"","3213121","Fiction"),
+                new Book(2L, "Book B", "Ah Window", 2.99,"","5645646","Computers"));
 
         when(mockRepository.findAll()).thenReturn(books);
 
@@ -79,11 +78,11 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].name", is("Book A")))
-                .andExpect(jsonPath("$[0].author", is("Ah Pig")))
+                .andExpect(jsonPath("$[0].author", is("Ah Doors")))
                 .andExpect(jsonPath("$[0].price", is(1.99)))
                 .andExpect(jsonPath("$[1].id", is(2)))
                 .andExpect(jsonPath("$[1].name", is("Book B")))
-                .andExpect(jsonPath("$[1].author", is("Ah Dog")))
+                .andExpect(jsonPath("$[1].author", is("Ah Window")))
                 .andExpect(jsonPath("$[1].price", is(2.99)));
 
         verify(mockRepository, times(1)).findAll();
@@ -97,7 +96,7 @@ public class BookControllerTest {
     @Test
     public void save_book_OK() throws Exception {
 
-        Book newBook = new Book(1L, "Spring Boot Guide", "Sara P", new BigDecimal("2.99"),"","","");
+        Book newBook = new Book(1L, "Spring Boot Guide", "Sara P", 2.99,"","343242","Computers");
         when(mockRepository.save(any(Book.class))).thenReturn(newBook);
 
         mockMvc.perform(post("/books")
@@ -117,7 +116,7 @@ public class BookControllerTest {
     @Test
     public void update_book_OK() throws Exception {
 
-        Book updateBook = new Book(1L, "ABC", "Sara P", new BigDecimal("19.99"),"","","");
+        Book updateBook = new Book(1L, "ABC", "Sara P", 19.99,"","23213123","comics");
         when(mockRepository.save(any(Book.class))).thenReturn(updateBook);
 
         mockMvc.perform(put("/books/1")

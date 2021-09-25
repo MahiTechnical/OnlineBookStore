@@ -19,13 +19,13 @@ public class Book {
     private String isbn;
     private String type;
     private String author;
-    private BigDecimal price;
+    private double price;
 
     // avoid this "No default constructor for entity"
     public Book() {
     }
 
-    public Book(Long id, String name, String author, BigDecimal price,String description,String isbn,String type) {
+    public Book(Long id, String name, String author, double price,String description,String isbn,String type) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -35,7 +35,7 @@ public class Book {
         this.type=type;
     }
 
-    public Book(String name, String author, BigDecimal price,String description,String isbn,String type) {
+    public Book(String name, String author, double price,String description,String isbn,String type) {
         this.name = name;
         this.author = author;
         this.price = price;
@@ -92,11 +92,11 @@ public class Book {
         this.author = author;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
